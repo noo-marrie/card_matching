@@ -1,0 +1,139 @@
+/* --- Giga Landscape Presentation --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffccff;
+  font-family: "Press Start 2P", cursive;
+  color: #ff4da6;
+  overflow: hidden; /* Prevent scrolling during presentation */
+}
+
+.arcade-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #87ceeb 0%, #ffccff 100%);
+  position: relative;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  z-index: 5;
+}
+
+h1 {
+  font-size: 48px; /* Massive Header */
+  color: #fff;
+  text-shadow: 6px 6px 0px #ff4da6, 10px 10px 0px #000;
+  margin: 0;
+}
+
+.stats {
+  margin-top: 20px;
+  font-size: 18px; /* Readable for the back row */
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px 30px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+#match-count {
+  color: #00ff00; /* Neon green for the number */
+}
+
+/* --- The Giga Grid --- */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 30px; /* Wider gaps for big screens */
+  width: 95%; /* Use almost the whole screen width */
+  max-width: 1600px; /* Prevents stretching too far on ultra-wide monitors */
+  z-index: 5;
+}
+
+/* --- Giant Retro Cards --- */
+.card {
+  aspect-ratio: 4/3.5; /* Balanced landscape shape */
+  perspective: 1500px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 8px solid #fff; /* Thicker borders for bigger cards */
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card-front {
+  background-color: #ff99cc;
+  color: #fff;
+  font-size: 80px; /* Giant Star/Placeholder */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.4) 15%,
+    transparent 15%
+  );
+  background-size: 30px 30px;
+}
+
+.card-back {
+  background-color: #fffbe6;
+  color: #ff4da6;
+  transform: rotateY(180deg);
+  font-size: 1rem; /* Increased font for clear reading */
+  line-height: 1.6;
+  border-color: #ffd11a;
+}
+
+/* States */
+.card.matched .card-back {
+  background-color: #ccffcc;
+  border-color: #00ff41;
+  color: #1b5e20;
+  transform: rotateY(180deg) scale(1.05); /* Slight pop when correct */
+}
+
+.card.mismatch .card-back {
+  background-color: #ffcccc;
+  border-color: #ff0000;
+}
+
+/* Subtle scanlines */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.03) 50%);
+  background-size: 100% 6px;
+  pointer-events: none;
+  z-index: 10;
+}
