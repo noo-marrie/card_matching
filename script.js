@@ -190,7 +190,7 @@ function unflipCards() {
       card.classList.remove("mismatch");
     });
     resetBoardState();
-  }, 1000); // Wait 1.2s so user can see the mismatch
+  }, 5000); // Wait 1.2s so user can see the mismatch
 }
 
 // Reset selection variables
