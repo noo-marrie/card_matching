@@ -96,12 +96,24 @@ function createBoard() {
   // Shuffle a copy of the data
   const shuffledCards = shuffle([...cardDataRaw]);
 
-  console.log("--- Game Board Layout ---");
+  console.log("--- Board Layout ---");
+  for (let k = 0; k < shuffledCards.length; k++) {
+    // We use k + 1 so slots start at 1 instead of 0
+    console.log(
+      `Slot ${k + 1}: [ID: ${shuffledCards[k].id}] - ${shuffledCards[k].text.substring(0, 20)}...`,
+    );
+  }
+  console.log("---**** Cheat Layout ****---");
+
+  for (let i = 0; i < shuffledCards.length; i++) {
+    for (let j = i + 1; j < shuffledCards.length; j++) {
+      if (shuffledCards[i].id === shuffledCards[j].id) {
+        console.log(`matching slot : ${i + 1} - ${j + 1} `);
+      }
+    }
+  }
   shuffledCards.forEach((data, index) => {
     // Log the position, ID, and a snippet of the text
-    console.log(
-      `Slot ${index + 1}: [ID: ${data.id}] - ${data.text.substring(0, 20)}...`,
-    );
 
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
