@@ -93,21 +93,28 @@ function shuffle(array) {
 // Generate the game board
 function createBoard() {
   const board = document.getElementById("gameBoard");
+  // Shuffle a copy of the data
   const shuffledCards = shuffle([...cardDataRaw]);
 
-  shuffledCards.forEach((data) => {
+  console.log("--- Game Board Layout ---");
+  shuffledCards.forEach((data, index) => {
+    // Log the position, ID, and a snippet of the text
+    console.log(
+      `Slot ${index + 1}: [ID: ${data.id}] - ${data.text.substring(0, 20)}...`,
+    );
+
     const cardElement = document.createElement("div");
     cardElement.classList.add("card");
     cardElement.dataset.id = data.id;
 
     cardElement.innerHTML = `
-                    <div class="card-inner">
-                        <div class="card-front">?</div>
-                        <div class="card-back">
-                            <span>${data.text}</span>
-                        </div>
-                    </div>
-                `;
+        <div class="card-inner">
+            <div class="card-front">?</div>
+            <div class="card-back">
+                <span>${data.text}</span>
+            </div>
+        </div>
+    `;
 
     cardElement.addEventListener("click", flipCard);
     board.appendChild(cardElement);
