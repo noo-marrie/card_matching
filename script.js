@@ -121,7 +121,7 @@ function createBoard() {
 
     cardElement.innerHTML = `
         <div class="card-inner">
-            <div class="card-front">?</div>
+            <div class="card-front">${index + 1}</div>
             <div class="card-back">
                 <span>${data.text}</span>
             </div>

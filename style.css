@@ -28,7 +28,9 @@ header {
 h1 {
   font-size: 48px; /* Massive Header */
   color: #fff;
-  text-shadow: 6px 6px 0px #ff4da6, 10px 10px 0px #000;
+  text-shadow:
+    6px 6px 0px #ff4da6,
+    10px 10px 0px #000;
   margin: 0;
 }
 
